@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-tnt5)#)!0fj-eb=d^r=gyv#&#emk!iyc(l!knlls-zz3z7uxkc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -40,7 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # My apps:
-    'auth_vk.apps.AuthVkConfig',
+    'app',
+
+    # Other apps:
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.vk',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +132,35 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+SOCIAL_AUTH_VK_OAUTH2_KEY = '51726519'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = 'NYmxZyY3JCMgzaHWC0mU'
+SOCIAL_AUTH_VK_OAUTH_SCOPE = ['email']
+
+
+SITE_ID = 1
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    'vk': {
+        'APP': {
+            'client_id': SOCIAL_AUTH_VK_OAUTH2_KEY,
+            'secret': SOCIAL_AUTH_VK_OAUTH2_SECRET,
+            'key': '91ae2f9591ae2f9591ae2f957192bb6722991ae91ae2f95f57b6dd7d383d15a2c029857',
+        }    
+    }   
+}
+
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+
+LOGIN_REDIRECT_URL = '/'
+
+

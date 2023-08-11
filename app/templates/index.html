@@ -1,0 +1,11 @@
+<h1>
+	{% if user.is_authenticated %}
+		{{ user.first_name }}
+	{% else %}
+		Ты еще не вошла с помощью <a href="{% url 'account_login' %}">VK</a>, зайди пожалуйста.
+	{% endif %}
+</h1>
+
+<h3>
+	Привет, сделал специально для тебя!
+</h3>

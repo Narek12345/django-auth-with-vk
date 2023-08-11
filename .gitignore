@@ -3,3 +3,10 @@ venv
 
 # DB.
 db.sqlite3
+
+cert.crt
+cert.key
+
+__pycache__
+
+migrations
